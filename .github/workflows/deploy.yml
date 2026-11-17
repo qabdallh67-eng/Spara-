@@ -39,8 +39,6 @@ jobs:
           test -s dist/src/assets/images/whiteboard_hand_full_1794913591987.jpg
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
