@@ -1,0 +1,6 @@
+{
+  "name": "السبورة التاريخية — ثورة ٢٣ يوليو ١٩٥٢",
+  "description": "فيديو سبورة بيضاء تعليمي تفاعلي فائق الواقعية متزامن مع الشرح الصوتي الكامل لتاريخ مصر قبل ثورة ٢٣ يوليو ١٩٥٢ وقيام الثورة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
