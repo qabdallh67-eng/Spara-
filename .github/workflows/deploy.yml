@@ -1,4 +1,4 @@
-name: Build and Deploy Spara
+name: Build and Deploy Spara PWA
 
 on:
   push:
@@ -17,12 +17,15 @@ jobs:
   build:
     name: Build website
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
     steps:
-      - name: Get source code
-        uses: actions/checkout@v4
+      - name: Check out source
+        uses: actions/checkout@v7
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
 
@@ -37,17 +40,19 @@ jobs:
         env:
           GITHUB_ACTIONS: 'true'
 
-      - name: Verify and prepare website files
+      - name: Verify website output
         run: |
           set -eu
           test -s dist/index.html
           test -d dist/assets
-          touch dist/.nojekyll
-          echo "Website files are ready:"
+          echo "Build successful. Files prepared for GitHub Pages:"
           find dist -maxdepth 2 -type f | sort | head -80
 
-      - name: Upload website for GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -56,6 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     permissions:
+      actions: read
       pages: write
       id-token: write
     environment:
@@ -64,4 +70,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
