@@ -27,21 +27,21 @@ export const HAND_FULL_URL = `${import.meta.env.BASE_URL}src/assets/images/white
 export const HAND_PINCH_URL = `${import.meta.env.BASE_URL}src/assets/images/whiteboard_hand_place_1794918385734.jpg`;
 
 export const ILLUSTRATION_URLS: Record<IllustrationKey, string> = {
-  egypt_1952: `${import.meta.env.BASE_URL}src/assets/images/illus_egypt_1952_1794913594100.jpg',
-  farouk_palace: `${import.meta.env.BASE_URL}src/assets/images/illus_farouk_palace_1794913592542.jpg',
-  social_crisis: `${import.meta.env.BASE_URL}src/assets/images/illus_social_crisis_1794913595218.jpg',
-  canal_struggle: `${import.meta.env.BASE_URL}src/assets/images/illus_canal_struggle_1794913594976.jpg',
-  officers_club: `${import.meta.env.BASE_URL}src/assets/images/illus_officers_club_1794913594757.jpg',
-  cairo_fire: `${import.meta.env.BASE_URL}src/assets/images/illus_cairo_fire_1794913594770.jpg',
-  free_officers: `${import.meta.env.BASE_URL}src/assets/images/illus_free_officers_1794913595488.jpg',
-  july23_radio: `${import.meta.env.BASE_URL}src/assets/images/illus_july23_radio_1794913597208.jpg',
-  royal_abdication: `${import.meta.env.BASE_URL}src/assets/images/illus_royal_abdication_1794917349562.jpg',
-  evacuation_1954: `${import.meta.env.BASE_URL}src/assets/images/illus_evacuation_1954_1794917350909.jpg',
-  high_dam: `${import.meta.env.BASE_URL}src/assets/images/illus_high_dam_1794917350595.jpg',
-  suez_nationalization: `${import.meta.env.BASE_URL}src/assets/images/illus_suez_nationalization_1794917352342.jpg',
-  agrarian_reform: `${import.meta.env.BASE_URL}src/assets/images/illus_agrarian_reform_1794917353424.jpg',
-  women_education: `${import.meta.env.BASE_URL}src/assets/images/illus_women_education_1794917352443.jpg',
-  republic_summary: `${import.meta.env.BASE_URL}src/assets/images/illus_republic_summary_1794917352833.jpg',
+  egypt_1952: `${import.meta.env.BASE_URL}src/assets/images/illus_egypt_1952_1794913594100.jpg`,
+  farouk_palace: `${import.meta.env.BASE_URL}src/assets/images/illus_farouk_palace_1794913592542.jpg`,
+  social_crisis: `${import.meta.env.BASE_URL}src/assets/images/illus_social_crisis_1794913595218.jpg`,
+  canal_struggle: `${import.meta.env.BASE_URL}src/assets/images/illus_canal_struggle_1794913594976.jpg`,
+  officers_club: `${import.meta.env.BASE_URL}src/assets/images/illus_officers_club_1794913594757.jpg`,
+  cairo_fire: `${import.meta.env.BASE_URL}src/assets/images/illus_cairo_fire_1794913594770.jpg`,
+  free_officers: `${import.meta.env.BASE_URL}src/assets/images/illus_free_officers_1794913595488.jpg`,
+  july23_radio: `${import.meta.env.BASE_URL}src/assets/images/illus_july23_radio_1794913597208.jpg`,
+  royal_abdication: `${import.meta.env.BASE_URL}src/assets/images/illus_royal_abdication_1794917349562.jpg`,
+  evacuation_1954: `${import.meta.env.BASE_URL}src/assets/images/illus_evacuation_1954_1794917350909.jpg`,
+  high_dam: `${import.meta.env.BASE_URL}src/assets/images/illus_high_dam_1794917350595.jpg`,
+  suez_nationalization: `${import.meta.env.BASE_URL}src/assets/images/illus_suez_nationalization_1794917352342.jpg`,
+  agrarian_reform: `${import.meta.env.BASE_URL}src/assets/images/illus_agrarian_reform_1794917353424.jpg`,
+  women_education: `${import.meta.env.BASE_URL}src/assets/images/illus_women_education_1794917352443.jpg`,
+  republic_summary: `${import.meta.env.BASE_URL}src/assets/images/illus_republic_summary_1794917352833.jpg`,
 };
 
 const MARKER_COLORS = ['#111827', '#C81E1E', '#1D4ED8', '#047857', '#B45309', '#475569'];
