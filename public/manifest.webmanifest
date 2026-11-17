@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "السبورة التاريخية — ثورة ٢٣ يوليو ١٩٥٢",
+  "short_name": "السبورة التاريخية",
+  "description": "سبورة تعليمية تفاعلية متزامنة مع الشرح الصوتي.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F4F5F7",
+  "theme_color": "#0F172A",
+  "icons": [{"src":"./icons/app-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
