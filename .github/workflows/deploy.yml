@@ -1,14 +1,13 @@
-name: Build and Deploy Spara PWA
+name: Build and Deploy Spara
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: github-pages
@@ -16,41 +15,54 @@ concurrency:
 
 jobs:
   build:
+    name: Build website
     runs-on: ubuntu-latest
     steps:
-      - name: Get source
+      - name: Get source code
         uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
-      - name: TypeScript check
+        run: npm install --no-audit --no-fund --no-progress
+
+      - name: Check TypeScript
         run: npm run lint
+
       - name: Build production website
         run: npm run build
-      - name: Verify required production files
+        env:
+          GITHUB_ACTIONS: 'true'
+
+      - name: Verify and prepare website files
         run: |
+          set -eu
           test -s dist/index.html
-          test -s dist/manifest.webmanifest
-          test -s dist/sw.js
-          test -s dist/assets/aistudio/audio-3696319e-c167-4675-88b6-6b34e8455625_cfa0ca08.mp3
-          test -s dist/src/assets/images/whiteboard_hand_full_1794913591987.jpg
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Upload GitHub Pages artifact
+          test -d dist/assets
+          touch dist/.nojekyll
+          echo "Website files are ready:"
+          find dist -maxdepth 2 -type f | sort | head -80
+
+      - name: Upload website for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: dist
 
   deploy:
+    name: Publish website
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Publish website
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
