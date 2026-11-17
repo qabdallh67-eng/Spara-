@@ -98,8 +98,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({
     const ctx = offCanvas.getContext('2d');
     if (!ctx) throw new Error('تعذر تهيئة لوحة الرسم للتصدير.');
 
-    const audioEl = new Audio(AUDIO_URL);
+    const audioEl = new Audio();
     audioEl.crossOrigin = 'anonymous';
+    audioEl.src = AUDIO_URL;
+    audioEl.preload = 'auto';
     audioElRef.current = audioEl;
 
     const audioCtx = new AudioContext();
@@ -194,21 +196,32 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
     try {
       if (typeof VideoEncoder !== 'undefined' && typeof AudioEncoder !== 'undefined') {
-        const result = await exportWhiteboardFast({
-          preset,
-          scenes,
-          allElements,
-          assets,
-          pageScrollEnabled,
-          signal: controller.signal,
-          onProgress: (p) => setProgress(p),
-        });
-        const url = URL.createObjectURL(result.blob);
-        setFileExt(result.extension);
-        setElapsedSec(result.elapsedSeconds);
-        setDownloadUrl(url);
-        setStatus('ready');
-        return;
+        try {
+          const result = await exportWhiteboardFast({
+            preset,
+            scenes,
+            allElements,
+            assets,
+            pageScrollEnabled,
+            signal: controller.signal,
+            onProgress: (p) => setProgress(p),
+          });
+          const url = URL.createObjectURL(result.blob);
+          setFileExt(result.extension);
+          setElapsedSec(result.elapsedSeconds);
+          setDownloadUrl(url);
+          setStatus('ready');
+          return;
+        } catch (fastError) {
+          if (fastError instanceof DOMException && fastError.name === 'AbortError') {
+            throw fastError;
+          }
+          // Some Android browsers expose WebCodecs but do not support the
+          // required H.264/AAC encoder profile. Try the compatible recorder path.
+          if (typeof MediaRecorder === 'undefined') {
+            throw fastError;
+          }
+        }
       }
 
       if (typeof MediaRecorder !== 'undefined') {
