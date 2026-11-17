@@ -15,7 +15,7 @@ export const BOARD_HEIGHT = 1080;
 export const PANORAMA_BAYS = 9;
 export const PANORAMA_WIDTH = BOARD_WIDTH * PANORAMA_BAYS; // 17280px continuous board
 export const AUDIO_DURATION = 831.10;
-export const AUDIO_URL = '/assets/aistudio/audio-3696319e-c167-4675-88b6-6b34e8455625_cfa0ca08.mp3';
+export const AUDIO_URL = `${import.meta.env.BASE_URL}assets/aistudio/audio-3696319e-c167-4675-88b6-6b34e8455625_cfa0ca08.mp3`;
 
 /**
  * Global panoramic camera keyframes across 9 connected RTL bays (B1 right -> B9 left):
